@@ -60,6 +60,7 @@ define nagios::check(
   $notifications_enabled  = undef,
   $freshness_threshold    = undef,
   $contact_groups         = undef,
+  $servicegroups          = '',
 )
 {
   include nagios
@@ -126,6 +127,7 @@ define nagios::check(
     target                => $check_target,
     host_name             => $host,
     service_description   => $servicedescription,
+    servicegroups         => $servicegroups,
     check_command         => "${realcheckname}${params}",
     notification_period   => $notification_period,
     notifications_enabled => $notifications_enabled,
